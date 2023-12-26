@@ -1,0 +1,317 @@
+@charset "UTF-8";
+* {
+  font-family: "Oswald", 微軟正黑體;
+}
+
+html, body {
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+header {
+  position: relative;
+  background-color: #333;
+  text-align: center;
+}
+header .icon {
+  max-width: 650px;
+  width: 80%;
+  padding: 150px 0px;
+  margin-bottom: 80px;
+}
+header .marginbottom {
+  position: absolute;
+  width: 95%;
+  bottom: 0px;
+  right: 0px;
+  z-index: 3;
+  animation: upin 2s both;
+}
+@keyframes upin {
+  0% {
+    bottom: -100px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+header .explore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%, -50%);
+  top: 85%;
+  background-color: transparent;
+  color: #E6AF2E;
+  opacity: 0;
+  transition: 0.5s;
+}
+header .explore:after {
+  content: "v";
+  display: block;
+  transform: scaleX(1.2) scaleY(0.5);
+}
+header .explore.at_top {
+  opacity: 1;
+}
+
+nav.navbar {
+  border-bottom: solid 1px white;
+  transition: 0.5s;
+}
+nav.navbar a {
+  transition: 0.5s;
+  color: white;
+}
+
+nav.navbar.att_top {
+  background-color: #f2f2f2;
+}
+nav.navbar.att_top a, nav.navbar.att_top .nav-link {
+  color: #282f44;
+}
+nav.navbar.att_top button.navbar-toggler {
+  background-color: rgba(40, 47, 68, 0.5);
+}
+
+section {
+  padding: 60px 0px;
+  position: relative;
+}
+.chinese{
+  margin-left: 10px;
+  font-size: 20px;
+}
+section#section_about {
+  background-color: #E6AF2E;
+}
+section#section_about h1 {
+  margin-bottom: 20px;
+  color: white;
+}
+section#section_about .carousel-indicators {
+  margin: 20px;
+}
+.line{
+  margin-bottom: 50px;
+}
+section#section_about button.carousel-control-next, section#section_about button.carousel-control-prev {
+  margin: 1px;
+}
+section#section_about .carousel-indicators button.active {
+  margin-bottom: 0px;
+}
+section#section_service {
+  background-color: white;
+}
+section#section_service .col-sm-12.top {
+  margin-bottom: 20px;
+}
+section#section_service .col-sm-3 img {
+  width: 100%;
+  border-radius: 100%;
+  text-align: center;
+}
+section#section_service .col-sm-3 .col-sm-12.info.first {
+  margin-top: 30px;
+  text-align: center;
+}
+section#section_service .col-sm-3 .col-sm-12.info {
+  text-align: center;
+}
+section#section_service .col-sm-9 {
+  padding-left: 50px;
+}
+section#section_service .col-sm-9 h4 {
+  color: #E6AF2E;
+}
+section#section_service .col-sm-9 .col-sm-12.contest {
+  margin-top: 20px;
+}
+section#section_service .col-sm-9 .col-sm-6.we {
+  margin-top: 30px;
+}
+section#section_service .col-sm-9 .col-sm-12.contest p.title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #282f44;
+}
+section#section_service .col-sm-9 .col-sm-6 h5.l {
+  padding-top: 20px;
+}
+section#section_service .col-sm-9 .col-sm-6.skill {
+  margin-top: 20px;
+}
+section#section_service .col-sm-9 .col-sm-6.skill p.a {
+  font-family: arial;
+}
+section#section_service .col-sm-9 .col-sm-6.skill p.type {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+section#section_service .lefttiger img {
+  position: absolute;
+  width: 25%;
+  right: 5px;
+  bottom: 0px;
+}
+
+@media screen and (min-width: 580px) {
+  .lefttiger {
+    position: absolute;
+    width: 60%;
+    right: 10px;
+    bottom: 0px;
+  }
+}
+section#section_works {
+  background-color: #ececec;
+}
+section#section_works .col-sm-3 {
+  text-align: center;
+  padding: 20px;
+}
+
+section#section_works #icon-i {
+  margin-top: 30px;
+ 
+}
+section#section_works .col-sm-3 .btn {
+  background-color: #fff;
+  margin-top: 10px;
+  transform: rotate(10deg);
+  box-shadow: 6px 4px #666;
+}
+section#section_works .col-sm-3 #btn-i {
+  
+  margin-top: 50px;
+  
+}
+section#section_works .col-sm-3 .btn:hover {
+  background-color: #ececec;
+}
+section#section_works .col-sm-12.tiger {
+  height: 100px;
+}
+section#section_works .col-sm-12.tiger img {
+  width: 50%;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding-bottom: 0px;
+}
+
+@media screen and (min-width: 580px) {
+  .col-sm-12.tiger {
+    height: 100px;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .col-sm-12.tiger.big {
+    height: 460px;
+  }
+  .col-sm-12.tiger .texts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%, -50%);
+  }
+}
+section#section_contact {
+  background-color: #282f44;
+  color: white;
+  overflow: hidden;
+  
+}
+section#section_contact img.paper {
+  position: absolute;
+  width: 95%;
+  top: 0px;
+  right: 0px;
+  z-index: 4;
+  animation: upin 2s both;
+}
+section#section_contact .mails {
+  max-width: 500px;
+}
+section#section_contact .col-sm-6 {
+  z-index: 3;
+  margin-top: 100px;
+  margin-bottom: 90px;
+  margin-top: 200px;
+
+}
+section#section_contact .mailbody {
+  background-color: #ececec;
+  color: #282f44;
+  padding: 20px;
+  padding-left: 40px;
+  transform: translateX(-30px);
+  
+}
+section#section_contact .mailbody label {
+  margin-top: 10px;
+}
+section#section_contact .mailbody input, section#section_contact .mailbody textarea {
+  display: block;
+  background-color: transparent;
+  border: none;
+  border: solid 3px #282f44;
+  padding: 1px 2px;
+}
+section#section_contact .mailbody textarea {
+  height: 140px;
+  width: 100%;
+}
+section#section_contact .mailcover {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%, -50%);
+  top: 60%;
+  right: 15%;
+  transform: rotate(10deg) scale(2) translate(-50%, -50%);
+}
+section#section_contact .mailcover img {
+  width: 110%;
+}
+section#section_contact .cat {
+  width: 150px;
+  position: absolute;
+  bottom: 0px;
+  transition: 0.3s;
+  z-index: 3;
+}
+section#section_contact #cat_blue {
+  width: 25%;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding-bottom: 0px;
+  z-index: 3;
+}
+
+@media screen and (max-width: 390px) {
+  .cat#cat_blue {
+    z-index: 5;
+    width: 40%;
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+footer#footer {
+  background-color: #666;
+  text-align: center;
+}
+footer#footer .icon {
+  width: 100%;
+  max-width: 450px;
+  padding: 60px 0px;
+}
