@@ -11,6 +11,7 @@ dist/
 # editor settings
 .vscode/
 .idea/
-
+.firebaserc
+firebase-debug 2.log
 # macOS cache
 .DS_Store
