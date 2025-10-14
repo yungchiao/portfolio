@@ -8,7 +8,7 @@
             <a class="btn" href="https://www.behance.net/gallery/102553695/portfolio" target="_blank">Product Design</a>
           </div>
           <div class="col-sm-3" id="icon-i">
-            <img class="icon" src="https://svgshare.com/i/gwN.svg" alt="">
+            <img class="icon" src="../img/2983817-01.svg" alt="">
             <a class="btn" id="btn-i" href="https://www.behance.net/gallery/172224277/Processing" target="_blank">Interaction Design</a>
           </div>
           <div class="col-sm-3">

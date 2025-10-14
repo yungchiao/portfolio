@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-sm-12 top"></div>
           <div class="col-sm-3">
-            <img src="/avatar.jpg" alt="avatar" />
+            <img src="../img/avatar.jpg" alt="avatar" />
             <div class="col-sm-12 info first"><hr /><h4>梁詠喬</h4></div>
             <div class="col-sm-12 info"><h4>Jolina Liang</h4></div>
             <div class="col-sm-12 info"><h4>1998/05/30</h4></div>

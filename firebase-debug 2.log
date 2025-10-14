@@ -1,0 +1,59 @@
+[debug] [2025-10-14T15:08:24.198Z] ----------------------------------------------------------------------
+[debug] [2025-10-14T15:08:24.201Z] Command:       /Users/jolina/.nvm/versions/node/v22.20.0/bin/node /usr/local/bin/firebase init hosting
+[debug] [2025-10-14T15:08:24.202Z] CLI Version:   14.19.1
+[debug] [2025-10-14T15:08:24.202Z] Platform:      darwin
+[debug] [2025-10-14T15:08:24.202Z] Node Version:  v22.20.0
+[debug] [2025-10-14T15:08:24.202Z] Time:          Tue Oct 14 2025 23:08:24 GMT+0800 (台北標準時間)
+[debug] [2025-10-14T15:08:24.203Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-14T15:08:24.207Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jolina
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2025-10-14T15:08:24.468Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-14T15:08:24.468Z] > authorizing via signed-in user (liangyongqiao05@gmail.com)
+[debug] [2025-10-14T15:08:24.469Z] Checked if tokens are valid: false, expires at: 1706512141450
+[debug] [2025-10-14T15:08:24.469Z] Checked if tokens are valid: false, expires at: 1706512141450
+[debug] [2025-10-14T15:08:24.469Z] > refreshing access token with scopes: []
+[debug] [2025-10-14T15:08:24.471Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-14T15:08:24.471Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-14T15:08:24.589Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-14T15:08:24.589Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-14T15:08:24.589Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/co-work-group-1 [none]
+[debug] [2025-10-14T15:08:24.686Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/co-work-group-1 401
+[debug] [2025-10-14T15:08:24.686Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/co-work-group-1 {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2025-10-14T15:08:24.686Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-10-14T15:08:24.686Z] Checked if tokens are valid: false, expires at: 1706512141450
+[debug] [2025-10-14T15:08:24.686Z] Checked if tokens are valid: false, expires at: 1706512141450
+[debug] [2025-10-14T15:08:24.686Z] > refreshing access token with scopes: []
+[debug] [2025-10-14T15:08:24.687Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-14T15:08:24.687Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-14T15:08:24.727Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-14T15:08:24.727Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-14T15:08:24.728Z] Request to https://firebase.googleapis.com/v1beta1/projects/co-work-group-1 had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2025-10-14T15:08:24.802Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/co-work-group-1 had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:52:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[error] 
+[error] Error: Failed to get Firebase project co-work-group-1. Please make sure the project exists and your account has permission to access it.
+[debug] [2025-10-14T15:08:24.867Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-10-14T15:08:24.868Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
