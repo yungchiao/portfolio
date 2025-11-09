@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import Vue from 'vue';
 import App from './App.vue';
+import router from './router';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,5 +24,6 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 new Vue({
+    router,
     render: h => h(App),
 }).$mount('#app');

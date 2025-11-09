@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <section id="section_about">
       <div class="container">
         <div class="row">
@@ -56,4 +56,4 @@
   <script>
   export default { name: 'SectionAbout' }
   </script>
-  
+   -->

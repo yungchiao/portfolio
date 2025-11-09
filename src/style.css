@@ -1,0 +1,47 @@
+.row5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.row5 section {
+  padding: 10px;
+}
+.work-item {
+  display: flex;
+  flex-direction: column;
+}
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -60px !important;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 15%;
+  margin-bottom: 1rem;
+  margin-left: 15%;
+  list-style: none;
+}
+.btn {
+  width: fit-content;
+  background-color: white !important;
+  box-shadow: inset;
+  margin-top: 10px;
+  transform: rotate(10deg);
+  box-shadow: 6px 4px #666;
+}
+.btn-style {
+  display: flex;
+  justify-content: center;
+}
+.carousel-inner {
+  overflow: visible !important;
+
+  margin: auto auto !important;
+}
+#carouselExampleIndicators {
+  max-width: 100%;
+  margin: 0 auto; /* 置中 */
+}
