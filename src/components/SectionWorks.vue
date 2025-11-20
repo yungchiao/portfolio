@@ -40,12 +40,14 @@
                           alt=""
                         />
                         <div class="btn-style">
-                          <a
-                            class="btn"
-                            href="https://www.behance.net/gallery/172224277/Processing"
-                            target="_blank"
-                            >Interaction Design</a
+                          <router-link
+                            :to="{
+                              name: 'project',
+                              params: { slug: 'gravity' },
+                            }"
                           >
+                            Gravity
+                          </router-link>
                         </div>
                       </div>
                     </div>

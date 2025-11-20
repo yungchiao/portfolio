@@ -1,16 +1,16 @@
 <template>
   <div>
-    <site-navbar :at-top="atTop" @scrollTo="smoothScroll" />
+    <site-navbar
+      :at-top="atTop"
+      @scrollTo="smoothScroll"
+      :class="{ 'navbar-transparent': $route.name === 'home' }"
+    />
     <header-hero :at-top="atTop" id="header_index" />
 
     <section-about id="section_about" />
     <section-service id="section_service" />
     <section-works id="section_works" />
     <section-contact id="section_contact" />
-
-    <footer id="footer" class="text-center bg-secondary">
-      <img class="icon" src="https://i.imgur.com/kypAbqH.png" alt="footer" />
-    </footer>
   </div>
 </template>
 
@@ -58,7 +58,7 @@ export default {
 <style>
 /*（精簡版，全數源自你原始 CSS；如需全部細節我可再補完整檔）*/
 * {
-  font-family: "Oswald", 微軟正黑體;
+  font-family: "sans-serif", 微軟正黑體;
 }
 html,
 body {
@@ -111,7 +111,11 @@ header .explore.at_top {
   opacity: 1;
 }
 
-nav.navbar {
+nav.navbar:not(.navbar-transparent) {
+  background-color: #555;
+}
+nav.navbar.navbar-transparent {
+  background-color: transparent !important;
   border-bottom: 1px solid #fff;
   transition: 0.5s;
 }
@@ -255,5 +259,14 @@ footer#footer .icon {
   width: 100%;
   max-width: 450px;
   padding: 60px 0;
+}
+.carousel-control-next {
+  justify-content: right;
+}
+.carousel-control-prev {
+  justify-content: left;
+}
+.carousel-inner {
+  width: 90%;
 }
 </style>

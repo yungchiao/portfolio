@@ -1,15 +1,15 @@
 <template>
   <main class="project-detail">
     <!-- Hero -->
-    <section class="hero position-relative text-white">
+    <section class="hero position-relative text-white section-top">
       <div
         class="hero__bg"
         :style="{ backgroundImage: 'url(' + project.cover + ')' }"
       ></div>
       <div class="container py-5 position-relative">
         <h1 class="display-5 fw-bold">{{ project.title }}</h1>
-        <ul class="list-inline mt-3 small opacity-75">
-          <li class="list-inline-item me-3">
+        <ul class="list-inline mt-3 small opacity-75" style="margin-top: 40px">
+          <li class="list-inline-item me-3" v-if="project.client.length > 0">
             <strong>Client:</strong> {{ project.client }}
           </li>
           <li class="list-inline-item me-3">
@@ -18,6 +18,11 @@
           <li class="list-inline-item">
             <strong>Year:</strong> {{ project.year }}
           </li>
+          <div style="margin-top: 20px">
+            <li class="list-inline-item" v-for="(item, i) in project.headline">
+              <strong>{{ item }}</strong>
+            </li>
+          </div>
         </ul>
         <div class="mt-3">
           <a
@@ -36,7 +41,12 @@
     <!-- Overview -->
     <section class="py-5 bg-light">
       <div class="container">
-        <h2 class="h4 mb-3">Overview</h2>
+        <h2
+          class="h4 mb-3"
+          style="border-bottom: 1px solid #ccc; padding-bottom: 20px"
+        >
+          Overview
+        </h2>
         <p class="mb-0" style="white-space: pre-line">{{ project.overview }}</p>
       </div>
     </section>
@@ -44,17 +54,33 @@
     <!-- Gallery -->
     <section v-if="project.gallery && project.gallery.length" class="py-5">
       <div class="container">
-        <h2 class="h4 mb-4">Gallery</h2>
+        <h2 class="h4 mb-4" style="margin-bottom: 30px">Gallery</h2>
         <div class="row g-3">
           <div
-            v-for="(img, idx) in project.gallery"
+            v-for="(item, idx) in project.gallery"
             :key="idx"
             class="col-12 col-md-6 col-lg-4"
           >
-            <div class="ratio ratio-4x3 rounded overflow-hidden shadow-sm">
-              <img :src="img" class="w-100 h-100 object-fit-cover" />
+            <div class="mb-2 fw-semibold">{{ item.title }}</div>
+            <div
+              class="ratio ratio-4x3 rounded overflow-hidden shadow-sm gallery-thumb"
+              @click="openLightbox(item.img)"
+            >
+              <img :src="item.img" class="w-100 h-100 object-fit-cover" />
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Lightbox 放大檢視 -->
+      <div
+        v-if="lightboxImage"
+        class="lightbox-backdrop"
+        @click="closeLightbox"
+      >
+        <div class="lightbox-content" @click.stop>
+          <button class="lightbox-close" @click="closeLightbox">×</button>
+          <img :src="lightboxImage" class="lightbox-img" />
         </div>
       </div>
     </section>
@@ -62,7 +88,7 @@
     <!-- Video -->
     <section v-if="project.video" class="py-5 bg-light">
       <div class="container">
-        <h2 class="h4 mb-4">Video</h2>
+        <h2 class="h4 mb-4">{{ project.video.title }}</h2>
         <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
           <!-- YouTube -->
           <iframe
@@ -86,7 +112,7 @@
         <h2 class="h4 mb-3">Key Features</h2>
         <ul class="list-unstyled mb-0">
           <li v-for="(f, i) in project.features" :key="i" class="mb-2">
-            <span>•</span> {{ f }}
+            <span v-html="f"></span>
           </li>
         </ul>
       </div>
@@ -108,7 +134,25 @@
             <div class="p-3 border rounded h-100">
               <div class="small text-muted mb-1">Step {{ i + 1 }}</div>
               <h3 class="h6 mb-2">{{ step.title }}</h3>
-              <p class="mb-0">{{ step.text }}</p>
+              <div v-if="Array.isArray(step.text)">
+                <ul>
+                  <li v-for="item in step.text" :key="item">{{ item }}</li>
+                </ul>
+              </div>
+              <div v-else>
+                <p class="mb-0">{{ step.text }}</p>
+              </div>
+              <div v-if="step.bullets">
+                <ul>
+                  <li v-for="item in step.bullets" :key="item">{{ item }}</li>
+                </ul>
+              </div>
+              <div v-if="step.footer">
+                <p>{{ step.footer }}</p>
+              </div>
+              <div v-if="step.img" :style="{ width: '20%' }">
+                <img :src="step.img" class="step-img" />
+              </div>
             </div>
           </div>
         </div>
@@ -116,7 +160,7 @@
     </section>
 
     <!-- Credits / CTA -->
-    <section class="py-5">
+    <!-- <section class="py-5">
       <div class="container">
         <div class="row g-4">
           <div class="col-12 col-md-8">
@@ -143,7 +187,7 @@
           >
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 </template>
 
@@ -154,7 +198,7 @@ export default {
   name: "ProjectDetail",
   props: { slug: { type: String, required: false } },
   data() {
-    return { project: null };
+    return { project: null, lightboxImage: null };
   },
   created() {
     const slug = this.$route.params.slug;
@@ -165,6 +209,14 @@ export default {
       return;
     }
     this.project = p;
+  },
+  methods: {
+    openLightbox(img) {
+      this.lightboxImage = img;
+    },
+    closeLightbox() {
+      this.lightboxImage = null;
+    },
   },
 };
 </script>
@@ -178,11 +230,88 @@ export default {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.45;
+  background-size: 50%;
+  background-position: 60% 20%;
+  opacity: 0.75;
+  background-repeat: no-repeat;
+}
+.rounded {
+  position: relative;
+}
+.step-img {
+  position: absolute;
+  width: 30%;
+  height: auto;
+  bottom: 10px;
+  right: 10px;
 }
 .object-fit-cover {
   object-fit: cover;
+}
+.section-top {
+  margin-top: 60px;
+}
+.display-5 {
+  color: #e6af2e;
+}
+.list-inline-item {
+  display: block;
+}
+.btn-sm {
+  color: #666;
+  border: 1px solid #666;
+}
+.btn:hover {
+  transform: scale(1.5);
+}
+/* 小圖 hover 效果 */
+.gallery-thumb {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.text-white {
+  color: #666 !important;
+}
+.gallery-thumb:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Lightbox 背景遮罩 */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Lightbox 顯示內容 */
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+/* 關閉按鈕 */
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+/* 放大後圖片 */
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  object-fit: contain;
 }
 </style>

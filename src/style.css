@@ -29,8 +29,8 @@
   background-color: white !important;
   box-shadow: inset;
   margin-top: 10px;
-  transform: rotate(10deg);
   box-shadow: 6px 4px #666;
+  border: 1px solid #666;
 }
 .btn-style {
   display: flex;
