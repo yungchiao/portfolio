@@ -6,6 +6,7 @@ import gLogo from "../assets/gravity/gravity-logo.png";
 import flow from "../assets/gravity/gravity_flow.jpg";
 import gravityHeader from "../assets/gravity/hero-header.png";
 import wireframe from "../assets/gravity/wireframe_flow.png";
+import vr from "../assets/vr/vr.png";
 export const projects = [
 	{
 		slug: "product-design",
@@ -136,15 +137,13 @@ export const projects = [
 		],
 	},
 	{
-		slug: "interaction-design",
-		title: "Interaction Design",
-		cover:
-			"https://images.unsplash.com/photo-1520962922320-2038eebab146?q=80&w=1280&auto=format",
-		client: "Side Project",
-		role: ["UI/UX", "Frontend"],
-		year: "2024",
-		headline: "A community-driven event registration and sharing platform",
-		links: [{ label: "CaFe website", url: "https://cafe.cfhlab.studio/" }],
+		slug: "ar",
+		title: "ARfolio",
+		cover: vr,
+		client: "AR course project",
+		role: ["UI/UX", "Application Dev"],
+		year: "2020",
+		headline: "An AR app that redefines how designers present their work",
 		overview: "互動裝置 + 網頁視覺化的小型實驗，聚焦在動畫與觸控手勢。",
 		gallery: [],
 		video: null,
@@ -154,6 +153,7 @@ export const projects = [
 			{ title: "UI Design", text: "視覺規範與元件化" },
 		],
 		credits: [{ role: "Design & Dev", name: "Jolina Liang" }],
+		customComponent: "ArProject",
 	},
 	{
 		slug: "mock-project-1",
@@ -172,23 +172,7 @@ export const projects = [
 		process: [],
 		credits: [],
 	},
-	{
-		slug: "mock-project-2",
-		title: "Mock Project 2",
-		cover:
-			"https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1280&auto=format",
-		client: "Demo",
-		role: ["Frontend"],
-		year: "2021",
-		headline: "Demo headline",
-		links: [],
-		overview: "這是範例專案 2。",
-		gallery: [],
-		video: null,
-		features: [],
-		process: [],
-		credits: [],
-	},
+	
 ];
 
 export function findProjectBySlug(slug) {
