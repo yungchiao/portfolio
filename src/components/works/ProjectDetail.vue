@@ -1,9 +1,12 @@
 <template>
   <main class="project-detail">
     <!-- Hero -->
-    <section class="hero position-relative text-white section-top">
+    <section
+      class="hero position-relative text-white section-top"
+      :class="project.cover === cafe ? 'text-white' : 'text-grey'"
+    >
       <div
-        class="hero__bg"
+        :class="project.cover === cafe ? 'hero__bg_cafe' : 'hero__bg'"
         :style="{ backgroundImage: 'url(' + project.cover + ')' }"
       ></div>
       <div class="container py-5 position-relative">
@@ -192,13 +195,13 @@
 </template>
 
 <script>
+import cafe from "../../assets/cafe/cafe_header.jpg";
 import { findProjectBySlug } from "../../data/project";
-
 export default {
   name: "ProjectDetail",
   props: { slug: { type: String, required: false } },
   data() {
-    return { project: null, lightboxImage: null };
+    return { project: null, lightboxImage: null, cafe };
   },
   created() {
     const slug = this.$route.params.slug;
@@ -232,7 +235,13 @@ export default {
   inset: 0;
   background-size: 50%;
   background-position: 60% 20%;
-  opacity: 0.75;
+  background-repeat: no-repeat;
+}
+.hero__bg_cafe {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 .rounded {
@@ -270,6 +279,9 @@ export default {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .text-white {
+  color: #fff;
+}
+.text-grey {
   color: #666 !important;
 }
 .gallery-thumb:hover {

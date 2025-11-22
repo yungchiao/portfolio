@@ -1,4 +1,6 @@
-import cafe from "../assets/cafe/job_list.png";
+import cFlow from "../assets/cafe/cafe_flow.jpg";
+import cafe from "../assets/cafe/cafe_header.jpg";
+import detail from "../assets/cafe/job_detail.png";
 import booking from "../assets/gravity/booking.png";
 import gLogo from "../assets/gravity/gravity-logo.png";
 import flow from "../assets/gravity/gravity_flow.jpg";
@@ -7,12 +9,12 @@ import wireframe from "../assets/gravity/wireframe_flow.png";
 export const projects = [
     {
         slug: 'product-design',
-        title: 'Product Design',
+        title: 'CaFe',
         cover: cafe,
-        client: 'ACME Co.',
-        role: ['Industrial Designer', 'UX Research'],
-        year: '2023',
-        headline: 'A community-driven event registration and sharing platform',
+        client: 'Major banks in Taiwan',
+        role: ['Frontend Enginner', 'UX Research'],
+        year: '2024',
+        headline: ['A community-driven event registration', 'and sharing platform'],
         links: [
             { label: 'CaFe website', url: 'https://cafe.cfhlab.studio/' }
         ],
@@ -21,10 +23,8 @@ export const projects = [
       It provides a collaborative modeling platform for multi-party data cooperation, originally created to address data-isolation issues among the group’s subsidiaries caused by regulatory restrictions. The framework has since expanded to support cross-institution collaboration, enabling financial organizations to jointly build anti-fraud prediction applications.
       Under the premise that raw data never leaves its source, CaFe leverages cryptographic techniques and distributed computing to allow multiple parties to train machine-learning models together securely.
     `,
-        gallery: [
-            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80&auto=format',
-            'https://images.unsplash.com/photo-1502462041640-b3d7e50d0660?w=1200&q=80&auto=format',
-            'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format'
+        gallery: [{ title: 'User Flow Map', img: cFlow }, { title: 'Low-fidelity Wireframes', img: wireframe }
+            , { title: 'High-fidelity Prototype', img: detail },
         ],
         // video: {
         //     type: 'youtube',
@@ -45,7 +45,7 @@ export const projects = [
                 ]
             },
             { title: 'Design Goals', text: ['Reduce cognitive load in job monitoring', 'Provide clear, real-time visual feedback', 'Support data scientists with structured error diagnosis', 'Enable cross-party transparency during federated learning', 'Unify scattered information into a single coherent UI'] },
-            { title: 'Interaction Flow Definition', text: [''] }
+
         ],
         credits: [
             { role: 'Design', name: 'Jolina Liang' },
@@ -57,7 +57,7 @@ export const projects = [
         title: 'Gravity',
         cover: gravityHeader,
         client: '',
-        role: ['Industrial Designer', 'UX Research'],
+        role: ['Frontend Enginner', 'UX Research', 'UX Design'],
         year: '2023',
         headline: ['A community-driven event registration and', ' sharing platform'],
         links: [
