@@ -56,27 +56,6 @@
 			</section>
 		</div>
 
-		<!-- Role / Timeline / Tools -->
-		<section class="section section-meta">
-			<div class="meta-grid">
-				<div class="meta-card">
-					<h3>My Role</h3>
-					<p>
-						UX Engineer / Application Developer<br />
-						Interaction design, AR prototyping, Unity implementation.
-					</p>
-				</div>
-				<div class="meta-card">
-					<h3>Timeline</h3>
-					<p>4 weeks (Course project)</p>
-				</div>
-				<div class="meta-card">
-					<h3>Tools</h3>
-					<p>Unity (C#), Vuforia / AR Foundation, Figma, Photoshop</p>
-				</div>
-			</div>
-		</section>
-
 		<!-- Research – Problem Context -->
 		<section class="section">
 			<div class="section-header">

@@ -16,32 +16,27 @@
 				></div>
 				<div class="container py-5 position-relative">
 					<h1 class="display-5 fw-bold">{{ project.title }}</h1>
+					<div style="margin-bottom: 20px">
+						<li
+							class="list-inline-item"
+							v-for="(item, i) in project.headline"
+							:key="i"
+						>
+							<strong>{{ item }}</strong>
+						</li>
+					</div>
+					<ul class="hero-meta">
+						<li v-if="project.client && project.client.length > 0">
+							<strong>Client:</strong> {{ project.client }}
+						</li>
+						<li><strong>Role:</strong> {{ project.role.join(", ") }}</li>
+						<li><strong>Tools:</strong> {{ project.tools.join(", ") }}</li>
+					</ul>
+
 					<ul
 						class="list-inline mt-3 small opacity-75"
 						style="margin-top: 40px"
-					>
-						<li
-							class="list-inline-item me-3"
-							v-if="project.client && project.client.length > 0"
-						>
-							<strong>Client:</strong> {{ project.client }}
-						</li>
-						<li class="list-inline-item me-3">
-							<strong>Role:</strong> {{ project.role.join(", ") }}
-						</li>
-						<li class="list-inline-item">
-							<strong>Year:</strong> {{ project.year }}
-						</li>
-						<div style="margin-top: 20px">
-							<li
-								class="list-inline-item"
-								v-for="(item, i) in project.headline"
-								:key="i"
-							>
-								<strong>{{ item }}</strong>
-							</li>
-						</div>
-					</ul>
+					></ul>
 					<div class="mt-3">
 						<a
 							v-for="(l, i) in project.links"
@@ -74,7 +69,7 @@
 			<!-- Gallery -->
 			<section v-if="project.gallery && project.gallery.length" class="py-5">
 				<div class="container">
-					<h2 class="h4 mb-4" style="margin-bottom: 30px">Gallery</h2>
+					<h2 class="h4 mb-4" style="margin-bottom: 30px">Process Flow</h2>
 					<div class="row g-3">
 						<div
 							v-for="(item, idx) in project.gallery"
@@ -216,9 +211,10 @@
 	import cafe from "../../assets/cafe/cafe_header.jpg";
 	import { findProjectBySlug } from "../../data/project";
 	import ArProject from "./ArProject.vue";
+	import TrainProject from "./TrainProject.vue";
 	export default {
 		name: "ProjectDetail",
-		components: { ArProject },
+		components: { ArProject, TrainProject },
 		props: { slug: { type: String, required: false } },
 		data() {
 			return { project: null, lightboxImage: null, cafe };
@@ -274,6 +270,12 @@
 		bottom: 10px;
 		right: 10px;
 	}
+	.hero-meta {
+		list-style: none;
+		padding: 0;
+		margin-bottom: 20px;
+		font-size: 0.95rem;
+	}
 	.object-fit-cover {
 		object-fit: cover;
 	}
@@ -290,9 +292,7 @@
 		color: #666;
 		border: 1px solid #666;
 	}
-	.btn:hover {
-		transform: scale(1.5);
-	}
+
 	/* 小圖 hover 效果 */
 	.gallery-thumb {
 		cursor: pointer;

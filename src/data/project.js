@@ -7,13 +7,16 @@ import flow from "../assets/gravity/gravity_flow.jpg";
 import gravityHeader from "../assets/gravity/hero-header.png";
 import wireframe from "../assets/gravity/wireframe_flow.png";
 import vr from "../assets/vr/vr.png";
+import train from "../assets/train/train_header.jpg";
+import cWireframe from "../assets/cafe/cafe_wireframe.png";
 export const projects = [
 	{
 		slug: "product-design",
 		title: "CaFe",
 		cover: cafe,
 		client: "Major banks in Taiwan",
-		role: ["Frontend Enginner", "UX Research"],
+		tools: ["Figma", "React"],
+		role: ["Frontend Engineer", "UX Design"],
 		year: "2024",
 		headline: ["A community-driven event registration", "and sharing platform"],
 		links: [{ label: "CaFe website", url: "https://cafe.cfhlab.studio/" }],
@@ -24,7 +27,7 @@ export const projects = [
     `,
 		gallery: [
 			{ title: "User Flow Map", img: cFlow },
-			{ title: "Low-fidelity Wireframes", img: wireframe },
+			{ title: "Low-fidelity Wireframes", img: cWireframe },
 			{ title: "High-fidelity Prototype", img: detail },
 		],
 		// video: {
@@ -74,7 +77,8 @@ export const projects = [
 		title: "Gravity",
 		cover: gravityHeader,
 		client: "",
-		role: ["Frontend Enginner", "UX Research", "UX Design"],
+		role: ["Frontend Engineer", "Database structure design", "UX Design"],
+		tools: ["Figma", "React"],
 		year: "2023",
 		headline: [
 			"A community-driven event registration and",
@@ -157,12 +161,11 @@ export const projects = [
 	},
 	{
 		slug: "mock-project-1",
-		title: "Mock Project 1",
-		cover:
-			"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1280&auto=format",
-		client: "Demo",
+		title: "DIU DIU",
+		cover: train,
+		client: "User Interface course project",
 		role: ["UI/UX"],
-		year: "2022",
+		year: "2019",
 		headline: "Demo headline",
 		links: [],
 		overview: "這是範例專案 1。",
@@ -171,8 +174,8 @@ export const projects = [
 		features: [],
 		process: [],
 		credits: [],
+		customComponent: "TrainProject",
 	},
-	
 ];
 
 export function findProjectBySlug(slug) {

@@ -1,47 +1,51 @@
 .row5 {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
 }
 .row5 section {
-  padding: 10px;
+	padding: 10px;
 }
 .work-item {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .carousel-indicators {
-  position: absolute;
-  right: 0;
-  left: 0;
-  bottom: -60px !important;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin-right: 15%;
-  margin-bottom: 1rem;
-  margin-left: 15%;
-  list-style: none;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: -60px !important;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	margin-right: 15%;
+	margin-bottom: 1rem;
+	margin-left: 15%;
+	list-style: none;
 }
 .btn {
-  width: fit-content;
-  background-color: white !important;
-  box-shadow: inset;
-  margin-top: 10px;
-  box-shadow: 6px 4px #666;
-  border: 1px solid #666;
+	width: fit-content;
+	background-color: white !important;
+	box-shadow: inset;
+	margin-top: 10px;
+	border: 1px solid #666;
+	transition: transform 1.8s cubic-bezier(0.4, 1.5, 0.5, 1);
+}
+.btn:hover {
+	transform: scale(1.08);
+	box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.13);
 }
 .btn-style {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 .carousel-inner {
-  overflow: visible !important;
+	overflow: visible !important;
 
-  margin: auto auto !important;
+	margin: auto auto !important;
 }
 #carouselExampleIndicators {
-  max-width: 100%;
-  margin: 0 auto; /* 置中 */
+	max-width: 100%;
+	margin: 0 auto; /* 置中 */
 }
