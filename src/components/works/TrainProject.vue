@@ -242,7 +242,7 @@
 </template>
 
 <script>
-import train from "../../assets/train/train_mockup.png";
+import train from "../../assets/train/train_mockup.jpg";
 export default {
   name: "TrainProject",
   data() {

@@ -58,7 +58,7 @@
             class="h4 mb-3"
             style="border-bottom: 1px solid #ccc; padding-bottom: 20px"
           >
-            Overview
+            Introduction
           </h2>
           <p class="mb-0" style="white-space: pre-line">
             {{ project.overview }}
