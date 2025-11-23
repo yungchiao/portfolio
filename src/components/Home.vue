@@ -73,8 +73,7 @@ header {
 header .icon {
   max-width: 650px;
   width: 80%;
-  padding: 150px 0;
-  margin-bottom: 80px;
+  padding-top: 150px;
 }
 header .marginbottom {
   position: absolute;
@@ -121,7 +120,10 @@ nav.navbar.navbar-transparent {
 }
 nav.navbar a {
   transition: 0.5s;
-  color: #fff;
+  color: #e6af2e;
+}
+.navbar-brand:hover {
+  color: #e6af2e !important;
 }
 nav.navbar.att_top {
   background: #f2f2f2;

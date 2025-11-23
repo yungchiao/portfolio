@@ -28,14 +28,6 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              href="#section_about"
-              @click.prevent="$emit('scrollTo', '#section_about')"
-              >Experience</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
               href="#section_service"
               @click.prevent="$emit('scrollTo', '#section_service')"
               >Intro</a
