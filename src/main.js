@@ -1,9 +1,11 @@
 // Import the functions you need from the SDKs you need
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

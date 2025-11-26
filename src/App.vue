@@ -16,7 +16,7 @@ export default {
   name: "App",
   components: { SiteNavbar },
   data() {
-    return { atTop: true };
+    return { atTop: true, mobileMenuOpen: false };
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll, { passive: true });
@@ -37,6 +37,19 @@ export default {
       // 已在首頁就直接平滑捲動
       const el = document.querySelector(target);
       if (el) el.scrollIntoView({ behavior: "smooth" });
+    },
+    onNavClick(selector) {
+      this.$emit("scrollTo", selector);
+
+      const toggler = document.querySelector(".navbar-toggler");
+      if (toggler && toggler.getAttribute("aria-expanded") === "true") {
+        toggler.click(); // 收合
+      }
+    },
+
+    onToggle() {
+      const toggler = document.querySelector(".navbar-toggler");
+      this.$emit("toggle", toggler.getAttribute("aria-expanded") === "true");
     },
   },
 };

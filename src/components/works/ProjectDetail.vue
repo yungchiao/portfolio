@@ -334,7 +334,7 @@ export default {
   object-fit: cover;
 }
 .section-top {
-  margin-top: 60px;
+  margin-top: 55px;
 }
 .display-5 {
   color: #e6af2e;

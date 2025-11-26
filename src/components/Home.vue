@@ -114,7 +114,6 @@ nav.navbar:not(.navbar-transparent) {
   background-color: #555;
 }
 nav.navbar.navbar-transparent {
-  background-color: transparent !important;
   border-bottom: 1px solid #fff;
   transition: 0.5s;
 }
