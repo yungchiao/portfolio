@@ -1,10 +1,6 @@
 <template>
   <div>
-    <site-navbar
-      :at-top="atTop"
-      @scrollTo="smoothScroll"
-      :class="{ 'navbar-transparent': $route.name === 'home' }"
-    />
+    <site-navbar :at-top="atTop" @scrollTo="smoothScroll" />
     <header-hero :at-top="atTop" id="header_index" />
 
     <section-about id="section_about" />
