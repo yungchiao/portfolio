@@ -19,7 +19,7 @@ export const projects = [
         role: ["Frontend Engineer", "UX Design"],
         year: "2024",
         headline: ["A community-driven event registration", "and sharing platform"],
-        links: [{ label: "CaFe website", url: "https://cafe.cfhlab.studio/" }],
+        links: [{ label: "CaFe – Official Product Overview", url: "https://cafe.cfhlab.studio/" }],
         overview: `
       CaFe is a federated learning framework independently developed by Cathay Financial Holdings based on open-source technologies.
       It provides a collaborative modeling platform for multi-party data cooperation, originally created to address data-isolation issues among the group’s subsidiaries caused by regulatory restrictions. The framework has since expanded to support cross-institution collaboration, enabling financial organizations to jointly build anti-fraud prediction applications.
