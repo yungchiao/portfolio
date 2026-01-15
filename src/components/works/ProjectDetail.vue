@@ -43,6 +43,7 @@
 						</li>
 						<li><strong>Role:</strong> {{ project.role.join(", ") }}</li>
 						<li><strong>Tools:</strong> {{ project.tools.join(", ") }}</li>
+						<li v-if="isCafeProject"><strong>(Patent granted)</strong></li>
 					</ul>
 
 					<ul
@@ -109,6 +110,80 @@
 							>
 								<img :src="item.img" class="w-100 h-100 object-fit-cover" />
 							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CaFe UI 輪播（RWD） -->
+			<section v-if="isCafeProject" class="py-5 bg-light">
+				<div class="container">
+					<h2 class="h4 mb-4">UI Showcase</h2>
+					<div class="cafe-ui">
+						<div class="gif-img">
+							<img
+								:src="currentCafeUiItem.img"
+								:alt="currentCafeUiItem.alt"
+								class="cafe-ui__img"
+							/>
+						</div>
+
+						<!-- 寬螢幕：輪播控制（上一張/下一張 + 指示點） -->
+						<div class="cafe-carousel-controls" aria-label="CaFe UI carousel">
+							<div class="cafe-carousel-controls__nav">
+								<button
+									type="button"
+									class="btn btn-outline-secondary btn-sm"
+									@click="prevCafeUi"
+									aria-label="Previous"
+								>
+									←
+								</button>
+								<button
+									type="button"
+									class="btn btn-outline-secondary btn-sm"
+									@click="nextCafeUi"
+									aria-label="Next"
+								>
+									→
+								</button>
+							</div>
+							<div class="cafe-carousel-controls__dots" role="tablist">
+								<button
+									v-for="item in cafeUiItems"
+									:key="item.key"
+									type="button"
+									class="cafe-dot"
+									:class="{
+										'cafe-dot--active': selectedCafeUiKey === item.key,
+									}"
+									@click="selectedCafeUiKey = item.key"
+									:aria-label="item.label"
+								></button>
+							</div>
+							<div class="cafe-carousel-controls__label">
+								{{ currentCafeUiItem.label }}
+							</div>
+						</div>
+
+						<!-- 平板/手機：下拉選單 -->
+						<div class="ui-dropdown-container">
+							<label class="visually-hidden" for="uiDropdownSelect"
+								>選擇UI功能</label
+							>
+							<select
+								id="uiDropdownSelect"
+								class="form-select ui-dropdown-select"
+								v-model="selectedCafeUiKey"
+							>
+								<option
+									v-for="item in cafeUiItems"
+									:key="item.key"
+									:value="item.key"
+								>
+									{{ item.label }}
+								</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -247,6 +322,12 @@
 
 <script>
 	import cafe from "../../assets/cafe/cafe_header.jpg";
+	import cafeRunningGif from "../../assets/cafe/running.gif";
+	import cafeTableGif from "../../assets/cafe/table.gif";
+	import cafeModelGif from "../../assets/cafe/model.gif";
+	import cafeJobImg from "../../assets/cafe/job_list.png";
+	import cafeJupyterGif from "../../assets/cafe/jupyter.gif";
+	import cafeUserGif from "../../assets/cafe/user.gif";
 	import { findProjectBySlug } from "../../data/project";
 	import ArProject from "./ArProject.vue";
 	import TrainProject from "./TrainProject.vue";
@@ -255,7 +336,44 @@
 		components: { ArProject, TrainProject },
 		props: { slug: { type: String, required: false } },
 		data() {
-			return { project: null, lightboxImage: null, cafe };
+			return {
+				project: null,
+				lightboxImage: null,
+				cafe,
+				selectedCafeUiKey: "running",
+				cafeUiItems: [
+					{
+						key: "running",
+						label: "RUNNING",
+						img: cafeRunningGif,
+						alt: "RUNNING",
+					},
+					{ key: "table", label: "TABLES", img: cafeTableGif, alt: "TABLES" },
+					{ key: "model", label: "MODELS", img: cafeModelGif, alt: "MODELS" },
+					{ key: "job", label: "JOBS", img: cafeJobImg, alt: "JOBS" },
+					{
+						key: "jupyter",
+						label: "JUPYTER",
+						img: cafeJupyterGif,
+						alt: "JUPYTER",
+					},
+					{ key: "user", label: "USER", img: cafeUserGif, alt: "USER" },
+				],
+			};
+		},
+		computed: {
+			isCafeProject() {
+				return this.project && this.project.title === "CaFe";
+			},
+			currentCafeUiIndex() {
+				const idx = this.cafeUiItems.findIndex(
+					(item) => item.key === this.selectedCafeUiKey
+				);
+				return idx >= 0 ? idx : 0;
+			},
+			currentCafeUiItem() {
+				return this.cafeUiItems[this.currentCafeUiIndex];
+			},
 		},
 		created() {
 			const slug = this.$route.params.slug;
@@ -274,6 +392,17 @@
 			openImageInNewTab(img) {
 				const newTab = window.open(img, "_blank", "noopener,noreferrer");
 				if (newTab) newTab.opener = null;
+			},
+			nextCafeUi() {
+				const nextIndex =
+					(this.currentCafeUiIndex + 1) % this.cafeUiItems.length;
+				this.selectedCafeUiKey = this.cafeUiItems[nextIndex].key;
+			},
+			prevCafeUi() {
+				const prevIndex =
+					(this.currentCafeUiIndex - 1 + this.cafeUiItems.length) %
+					this.cafeUiItems.length;
+				this.selectedCafeUiKey = this.cafeUiItems[prevIndex].key;
 			},
 			closeLightbox() {
 				this.lightboxImage = null;
@@ -361,6 +490,91 @@
 	.btn-sm {
 		color: #666;
 		border: 1px solid #666;
+	}
+
+	.cafe-ui {
+		display: grid;
+		gap: 24px;
+	}
+
+	.gif-img {
+		width: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+	}
+
+	.cafe-ui__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	.cafe-carousel-controls {
+		display: grid;
+		gap: 12px;
+	}
+
+	.cafe-carousel-controls__nav {
+		display: flex;
+		gap: 10px;
+	}
+
+	.cafe-carousel-controls__dots {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		align-items: center;
+	}
+
+	.cafe-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 999px;
+		border: 1px solid #666;
+		background: transparent;
+		padding: 0;
+		cursor: pointer;
+	}
+
+	.cafe-dot--active {
+		background: #666;
+	}
+
+	.cafe-carousel-controls__label {
+		color: #666;
+		font-size: 0.95rem;
+	}
+
+	.ui-dropdown-container {
+		display: none;
+	}
+
+	.ui-dropdown-select {
+		max-width: 260px;
+	}
+
+	@media (max-width: 1024px) {
+		.cafe-carousel-controls {
+			display: none;
+		}
+		.ui-dropdown-container {
+			display: block;
+		}
+		.ui-dropdown-select {
+			max-width: 100%;
+		}
+	}
+
+	@media (min-width: 1025px) {
+		.ui-dropdown-container {
+			display: none !important;
+		}
+		.cafe-carousel-controls {
+			display: grid;
+		}
 	}
 
 	/* 小圖 hover 效果 */
