@@ -112,7 +112,6 @@
 						</div>
 					</div>
 				</div>
-
 			</section>
 
 			<!-- Lightbox 放大檢視（Gallery 使用） -->
