@@ -120,25 +120,48 @@
 				<div class="container">
 					<h2 class="h4 mb-4">UI Showcase</h2>
 					<div class="cafe-ui">
-						<ul class="nav nav-tabs cafe-ui-tabs" role="tablist">
-							<li
-								v-for="item in cafeUiItems"
-								:key="item.key"
-								class="nav-item"
-								role="presentation"
+						<!-- Desktop/Tablet: Tabs -->
+						<div class="cafe-ui-tabs-container">
+							<ul class="nav nav-tabs cafe-ui-tabs" role="tablist">
+								<li
+									v-for="item in cafeUiItems"
+									:key="item.key"
+									class="nav-item"
+									role="presentation"
+								>
+									<button
+										type="button"
+										class="nav-link"
+										:class="{ active: selectedCafeUiKey === item.key }"
+										role="tab"
+										:aria-selected="selectedCafeUiKey === item.key"
+										@click="selectedCafeUiKey = item.key"
+									>
+										{{ item.key.toUpperCase() }}
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<!-- Small screens: Dropdown -->
+						<div class="cafe-ui-dropdown">
+							<label class="visually-hidden" for="cafeUiSelect"
+								>Select a UI module</label
 							>
-								<button
-									type="button"
-									class="nav-link"
-									:class="{ active: selectedCafeUiKey === item.key }"
-									role="tab"
-									:aria-selected="selectedCafeUiKey === item.key"
-									@click="selectedCafeUiKey = item.key"
+							<select
+								id="cafeUiSelect"
+								class="form-select"
+								v-model="selectedCafeUiKey"
+							>
+								<option
+									v-for="item in cafeUiItems"
+									:key="item.key"
+									:value="item.key"
 								>
 									{{ item.key.toUpperCase() }}
-								</button>
-							</li>
-						</ul>
+								</option>
+							</select>
+						</div>
 
 						<div class="cafe-ui-panel" role="tabpanel">
 							<div class="row g-4 align-items-start">
@@ -522,6 +545,10 @@
 		gap: 24px;
 	}
 
+	.cafe-ui-dropdown {
+		display: none;
+	}
+
 	.cafe-ui-tabs {
 		flex-wrap: nowrap;
 		overflow-x: auto;
@@ -539,6 +566,15 @@
 
 	.cafe-ui-panel {
 		padding-top: 16px;
+	}
+
+	@media (max-width: 768px) {
+		.cafe-ui-tabs-container {
+			display: none;
+		}
+		.cafe-ui-dropdown {
+			display: block;
+		}
 	}
 
 	.gif-img {
