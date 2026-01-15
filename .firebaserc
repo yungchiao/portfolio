@@ -1,7 +1,8 @@
 {
   "projects": {
-    "default": "co-work-group-1",
-    "stagin": "portfolio-yung-chiao"
+    "default": "portfolio-c166f",
+    "portfolio": "portfolio-c166f",
+    "cowork": "co-work-group-1"
   },
   "targets": {},
   "etags": {}
